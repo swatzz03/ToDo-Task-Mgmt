@@ -1,0 +1,54 @@
+/* src/components/styles/TaskForm.css */
+.task-form-wrapper {
+  margin-bottom: 1rem;
+}
+
+.open-form {
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.task-form {
+  background: var(--card-bg);
+  padding: 1rem;
+  border: 1px solid var(--border-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.task-form input,
+.task-form textarea,
+.task-form select {
+  padding: 0.6rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background: var(--bg-color);
+  color: var(--text-color);
+}
+
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
+.form-buttons button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.form-buttons button[type="submit"] {
+  background-color: var(--primary-color);
+  color: white;
+}

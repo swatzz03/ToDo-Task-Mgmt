@@ -1,0 +1,25 @@
+/* src/index.css */
+:root {
+  --bg-color: #ffffff;
+  --text-color: #111111;
+  --primary-color: #2f80ed;
+  --card-bg: #f3f4f6;
+  --border-color: #ccc;
+  --transition: 0.3s ease all;
+}
+
+[data-theme="dark"] {
+  --bg-color: #121212;
+  --text-color: #eeeeee;
+  --primary-color: #4f9fff;
+  --card-bg: #1e1e1e;
+  --border-color: #333;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: "Segoe UI", sans-serif;
+  transition: var(--transition);
+}
