@@ -1,50 +1,12 @@
 // src/components/TaskList.jsx
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import './styles/TaskList.css';
 
-const TaskList = () => {
-  const [tasks, setTasks] = useState([]);
-  const [error, setError] = useState('');
-
-  const fetchTasks = async () => {
-    try {
-      const res = await fetch('http://localhost:5000/tasks', {
-        credentials: 'include', // Send session cookie
-      });
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || 'Unauthorized');
-      }
-
-      const data = await res.json();
-      if (!Array.isArray(data)) {
-        throw new Error('Invalid response format');
-      }
-
-      setTasks(data);
-      setError('');
-    } catch (err) {
-      console.error('❌ Failed to fetch tasks:', err.message);
-      setError(err.message || 'Failed to fetch tasks');
-      setTasks([]); // Prevent crashing on .map
-    }
-  };
-
-  useEffect(() => {
-    fetchTasks();
-  }, []);
-
+const TaskList = ({ tasks }) => {
   return (
     <div className="task-list">
       <h2>Your Tasks</h2>
-
-      {error && (
-        <div className="task-error">
-          <p>⚠️ {error}</p>
-        </div>
-      )}
 
       <AnimatePresence>
         {tasks.map((task) => (

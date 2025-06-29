@@ -1,4 +1,3 @@
-// backend/routes/taskRoutes.js
 const { getUserFromSession } = require('../utils/session');
 const {
   createTask,
@@ -46,8 +45,9 @@ async function handleTasksAPI(req, res) {
       createdAt: new Date(),
     };
     const result = await createTask(task);
+    task._id = result.insertedId;
     res.writeHead(201, { 'Content-Type': 'application/json' });
-    return res.end(JSON.stringify({ insertedId: result.insertedId }));
+    return res.end(JSON.stringify(task));
   }
 
   if (method === 'PUT' && path.startsWith('/tasks/')) {

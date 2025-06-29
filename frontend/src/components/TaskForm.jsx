@@ -8,8 +8,9 @@ const TaskForm = ({ onTaskCreated }) => {
   const [task, setTask] = useState({ title: '', description: '', priority: 'normal' });
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
+  try {
     const res = await fetch('http://localhost:5000/tasks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -17,12 +18,25 @@ const TaskForm = ({ onTaskCreated }) => {
       body: JSON.stringify(task),
     });
 
-    if (res.ok) {
+    const data = await res.json();
+
+    if (res.ok && data._id) {
+      const newTask = {
+        ...data, // use returned data from backend
+      };
+
       setTask({ title: '', description: '', priority: 'normal' });
       setShowForm(false);
-      onTaskCreated && onTaskCreated();
+      onTaskCreated && onTaskCreated(newTask);
+    } else {
+      console.error('❌ Failed to create task:', data.error || data);
     }
-  };
+  } catch (err) {
+    console.error('❌ Error creating task:', err.message);
+  }
+};
+
+
 
   return (
     <div className="task-form-wrapper">
