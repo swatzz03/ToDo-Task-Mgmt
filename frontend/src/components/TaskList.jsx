@@ -7,7 +7,7 @@ const TaskList = ({ tasks, onTaskUpdated, onTaskDeleted }) => {
   const toggleStatus = async (task) => {
     const updatedStatus = task.status === 'done' ? 'in-progress' : 'done';
 
-    await fetch(`http://localhost:5000/tasks/${task._id}`, {
+    await fetch(`https://todo-task-mgmt.onrender.com/tasks/${task._id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -18,7 +18,7 @@ const TaskList = ({ tasks, onTaskUpdated, onTaskDeleted }) => {
   };
 
   const deleteTask = async (id) => {
-    await fetch(`http://localhost:5000/tasks/${id}`, {
+    await fetch(`https://todo-task-mgmt.onrender.com/tasks/${id}`, {
       method: 'DELETE',
       credentials: 'include',
     });

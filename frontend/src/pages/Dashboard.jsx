@@ -8,7 +8,7 @@ const Dashboard = () => {
   const [filter, setFilter] = useState('all');
 
   const fetchTasks = async () => {
-    const res = await fetch('http://localhost:5000/tasks', {
+    const res = await fetch('https://todo-task-mgmt.onrender.com/tasks', {
       credentials: 'include',
     });
     const data = await res.json();
