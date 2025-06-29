@@ -23,3 +23,9 @@ body {
   font-family: "Segoe UI", sans-serif;
   transition: var(--transition);
 }
+select {
+  padding: 6px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}

@@ -5,7 +5,15 @@ import './styles/TaskForm.css';
 
 const TaskForm = ({ onTaskCreated }) => {
   const [showForm, setShowForm] = useState(false);
-  const [task, setTask] = useState({ title: '', description: '', priority: 'normal' });
+  const [task, setTask] = useState({
+  title: '',
+  description: '',
+  priority: 'normal',
+  time: '',
+  date: '',
+  status: 'in-progress',
+  sharedWith: '',
+});
 
   const handleSubmit = async (e) => {
   e.preventDefault();
@@ -73,6 +81,19 @@ const TaskForm = ({ onTaskCreated }) => {
               <option value="normal">Normal</option>
               <option value="high">High</option>
             </select>
+            <input
+              type="date"
+              value={task.date}
+              onChange={(e) => setTask({ ...task, date: e.target.value })}
+              required
+            />
+
+            <input
+              type="time"
+              value={task.time}
+              onChange={(e) => setTask({ ...task, time: e.target.value })}
+              className="time-input"
+            />
             <div className="form-buttons">
               <button type="submit">Save</button>
               <button type="button" onClick={() => setShowForm(false)}>Cancel</button>

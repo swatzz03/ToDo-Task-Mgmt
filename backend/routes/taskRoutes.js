@@ -38,12 +38,17 @@ async function handleTasksAPI(req, res) {
     const task = {
       title: data.title,
       description: data.description || '',
-      status: 'in-progress',
+      time: data.time || '',
+      date: data.date || '',
+      status: data.status || 'in-progress',
       priority: data.priority || 'normal',
       owner: user.email,
-      sharedWith: [],
+      sharedWith: data.sharedWith || [],
       createdAt: new Date(),
     };
+
+
+
     const result = await createTask(task);
     task._id = result.insertedId;
     res.writeHead(201, { 'Content-Type': 'application/json' });
@@ -51,12 +56,12 @@ async function handleTasksAPI(req, res) {
   }
 
   if (method === 'PUT' && path.startsWith('/tasks/')) {
-    const id = path.split('/')[2];
-    const updates = await getRequestBody(req);
-    await updateTask(id, updates);
-    res.writeHead(204);
-    return res.end();
-  }
+  const id = path.split('/')[2];
+  const updates = await getRequestBody(req);
+  await updateTask(id, updates);
+  res.writeHead(204);
+  return res.end();
+}
 
   if (method === 'DELETE' && path.startsWith('/tasks/')) {
     const id = path.split('/')[2];
