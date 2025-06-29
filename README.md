@@ -38,24 +38,13 @@ A full-stack task management web application built using **Node.js (no Express)*
 
 ## 🌐 Live Deployment
 
-🔗 [https://your-live-url.vercel.app](https://your-live-url.vercel.app)  
-🧑‍💻 Backend hosted on: [https://your-backend-url.onrender.com](https://your-backend-url.onrender.com)
+🔗 [https://to-do-task-mgmt.vercel.app/]
+🧑‍💻 Backend hosted on: [https://todo-task-mgmt.onrender.com]
 
 > ✅ **Note:** Only publicly deployed submissions will be evaluated.
 
 ---
 
-## 📸 Architecture Diagram
-
-![Architecture Diagram](./assets/architecture.png)
-
----
-
-## 📽️ Loom Video
-
-🎥 [Click to Watch Demo on Loom](https://www.loom.com/share/your-video-link)
-
----
 
 ## 💡 Assumptions
 
