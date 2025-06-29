@@ -39,24 +39,39 @@ const TaskList = ({ tasks, onTaskUpdated, onTaskDeleted }) => {
             exit={{ opacity: 0, scale: 0.9 }}
             layout
           >
-            <div className="task-top">
+            <div className="task-card-header">
               <label className="checkbox-container">
                 <input
                   type="checkbox"
                   checked={task.status === 'done'}
                   onChange={() => toggleStatus(task)}
+                  className="rounded-checkbox"
                 />
-                <span className="checkmark" />
               </label>
-              <div className="task-texts">
+
+              <div className="task-title">
                 <h4>{task.title}</h4>
                 <p>{task.description}</p>
               </div>
-              <button className="delete-btn" onClick={() => deleteTask(task._id)}>
+
+              <button onClick={() => deleteTask(task._id)} className="delete-btn">
                 🗑️
               </button>
             </div>
-            <span className={`priority ${task.priority}`}>{task.priority}</span>
+
+            <div className="task-details">
+              <span className="priority-icon">
+                {task.priority === 'high'
+                  ? '🔥 High'
+                  : task.priority === 'normal'
+                  ? '⚠️ Normal'
+                  : '💤 Low'}
+              </span>
+              {task.date && <span>📅 {task.date}</span>}
+              {task.time && <span>⏰ {task.time}</span>}
+              <span>{task.status === 'done' ? '✅ Done' : '⏳ In Progress'}</span>
+              {task.sharedWith?.length > 0 && <span>📤 Shared</span>}
+            </div>
           </motion.div>
         ))}
       </AnimatePresence>

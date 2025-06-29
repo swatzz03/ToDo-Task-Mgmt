@@ -10,7 +10,7 @@ const Login = () => {
   useEffect(() => {
     const session = document.cookie.includes('session_token');
     if (session) navigate('/dashboard');
-  }, []);
+  }, [navigate]);
 
   const handleLogin = () => {
     window.location.href = 'http://localhost:5000/auth/google';
@@ -18,18 +18,24 @@ const Login = () => {
 
   return (
     <motion.div
-      className="login-page"
+      className="login-container"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      <h1>Welcome to Task Manager</h1>
-      <motion.button
-        onClick={handleLogin}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        Sign in with Google
-      </motion.button>
+      <div className="login-left">
+        <motion.h1 initial={{ x: -50 }} animate={{ x: 0 }}>Welcome to Task Manager</motion.h1>
+        <motion.button
+          onClick={handleLogin}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.95 }}
+        >
+          Sign in with Google
+        </motion.button>
+      </div>
+
+      <div className="login-right">
+        <div className="circle-image" />
+      </div>
     </motion.div>
   );
 };

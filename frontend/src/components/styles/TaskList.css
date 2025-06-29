@@ -1,14 +1,10 @@
 .task-card {
   background: var(--card-bg);
   border: 1px solid var(--border-color);
-  border-left: 6px solid var(--primary-color);
+  border-radius: 16px;
   padding: 1rem;
-  border-radius: 10px;
   margin-bottom: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  transition: background 0.3s;
+  transition: box-shadow 0.3s;
 }
 
 .task-card.completed {
@@ -16,29 +12,33 @@
   text-decoration: line-through;
 }
 
-.task-top {
+.task-card-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
 }
 
-.task-texts {
-  flex: 1;
-  margin-left: 1rem;
+.task-title h4 {
+  margin: 0;
+  font-size: 1.2rem;
 }
 
-.checkbox-container {
+.task-title p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.task-details {
   display: flex;
-  align-items: center;
-  cursor: pointer;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
 }
 
-.checkbox-container input {
-  width: 18px;
-  height: 18px;
-  margin-right: 6px;
-  border-radius: 6px;
-  accent-color: var(--primary-color);
+.priority-icon {
+  font-weight: bold;
 }
 
 .delete-btn {
@@ -47,17 +47,29 @@
   color: red;
   font-size: 1.2rem;
   cursor: pointer;
-  margin-left: 1rem;
-  transition: transform 0.2s;
+  margin-left: auto;
 }
 
-.delete-btn:hover {
-  transform: scale(1.2);
-}
 .rounded-checkbox {
   width: 18px;
   height: 18px;
   border-radius: 6px;
-  accent-color: var(--primary-color); /* adapt to your theme */
+  accent-color: var(--primary-color);
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .task-card-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .task-details {
+    flex-direction: column;
+    font-size: 0.85rem;
+  }
+
+  .task-title h4 {
+    font-size: 1rem;
+  }
 }

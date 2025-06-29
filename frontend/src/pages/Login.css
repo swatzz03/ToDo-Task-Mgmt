@@ -1,22 +1,72 @@
-/* src/pages/Login.css */
-.login-page {
+.login-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   height: 100vh;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  gap: 1rem;
+  width: 100%;
+  background-color: var(--bg-light);
 }
 
-.login-page button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 1rem 2rem;
-  border-radius: 10px;
+.login-left, .login-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.login-left {
+  flex-direction: column;
+  text-align: center;
+  background-color: var(--bg-light);
+  color: var(--text-dark);
+}
+
+.login-left h1 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.login-left button {
+  padding: 0.8rem 2rem;
   font-size: 1rem;
+  background-color: var(--primary-color);
+  border: none;
+  color: white;
+  border-radius: 10px;
   cursor: pointer;
-  transition: var(--transition);
+  transition: background 0.3s;
+}
+
+.login-left button:hover {
+  background-color: var(--primary-dark);
+}
+
+.login-right {
+  background-color: var(--primary-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.circle-image {
+  width: 320px;
+  height: 320px;
+  background-image: url('../../public/login-art.png'); /* your image here */
+  background-size: cover;
+  background-position: center;
+  border-radius: 50% 0 0 50%;
+  clip-path: ellipse(70% 100% at 100% 50%);
+}
+
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+
+  .login-right {
+    display: none;
+  }
+
+  .login-left h1 {
+    font-size: 1.8rem;
+  }
 }
