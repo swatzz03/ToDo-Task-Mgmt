@@ -10,9 +10,10 @@ const TaskForm = ({ onTaskCreated }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch('/tasks', {
+    const res = await fetch('http://localhost:5000/tasks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
       body: JSON.stringify(task),
     });
 

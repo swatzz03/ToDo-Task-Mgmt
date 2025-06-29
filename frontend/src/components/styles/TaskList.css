@@ -43,3 +43,11 @@
   background: #fbbf24;
   color: white;
 }
+.task-error {
+  color: #f87171;
+  background-color: #fee2e2;
+  border: 1px solid #fca5a5;
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin-top: 1rem;
+}

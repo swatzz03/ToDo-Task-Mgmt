@@ -6,9 +6,20 @@ const { handleTasksAPI } = require('./routes/taskRoutes');
 const { handleGoogleAuth } = require('./auth/googleAuth');
 const { setupWebSocket } = require('./sockets/websocket');
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 
 const server = http.createServer(async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+
+  // Handle preflight OPTIONS requests immediately
+  if (req.method === 'OPTIONS') {
+    res.writeHead(204);
+    res.end();
+    return;
+  }
   const parsedUrl = url.parse(req.url, true);
   const pathname = parsedUrl.pathname;
 

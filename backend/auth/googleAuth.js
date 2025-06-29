@@ -87,7 +87,7 @@ function handleGoogleAuth(req, res) {
             });
 
             // Redirect to frontend dashboard
-            res.writeHead(302, { Location: '/' });
+            res.writeHead(302, { Location: 'http://localhost:3000/dashboard' });
             res.end();
           });
         });
